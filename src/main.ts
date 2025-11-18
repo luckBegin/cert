@@ -11,8 +11,8 @@ async function bootstrap() {
     );
     app.enableCors({origin: '*'});
 
-    app.useStaticAssets(join(__dirname, '..', 'public'));
-    app.setBaseViewsDir(join(__dirname, '..', 'views'));
+    app.useStaticAssets(join(__dirname, 'public'));
+    app.setBaseViewsDir(join(__dirname, 'views'));
     hbs.registerPartials(join(process.cwd(), 'views/partials'));
     app.setViewEngine('hbs');
     await app.listen(4000, '0.0.0.0');
