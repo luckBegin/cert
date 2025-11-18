@@ -1,0 +1,1 @@
+select xm, sjh,idcard,qfsj,qfcs ,qfjc ,ddsj ,ddcs,ddjc, ph,hbh from flight where ph is not null and hbh is not null and qfsj like '%2025-06-24%' order by sjh desc

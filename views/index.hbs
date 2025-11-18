@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>学员证书查询数据库</title>
+	{{> assets}}
+	<style>
+		body {
+			min-height: 100vh;
+			background: url("bg.png") round ;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-family: "Microsoft YaHei", sans-serif;
+		}
+
+		.query-container {
+			background-color: rgba(255, 255, 255, 0.9);
+			border-radius: 15px;
+			padding: 40px 30px;
+			max-width: 400px;
+			width: 100%;
+			box-shadow: 0 0 20px rgba(0,0,0,0.1);
+			text-align: center;
+		}
+
+		.query-container h2 {
+			margin-bottom: 30px;
+			font-weight: 600;
+		}
+
+		.form-control {
+			margin-bottom: 20px;
+			height: 45px;
+			padding: 0 10px;
+			font-size: 16px;
+			width: 100%;
+			box-sizing: border-box;
+		}
+
+		.btn-query {
+			width: 100%;
+			height: 45px;
+			font-size: 16px;
+		}
+
+		.note {
+			margin-top: 20px;
+			text-align: left;
+			font-size: 14px;
+			color: #555;
+		}
+
+		.athlete-left {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 180px;
+		}
+
+		.athlete-right {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			width: 150px;
+		}
+
+		@media (max-width: 768px) {
+			.athlete-left,
+			.athlete-right {
+				display: none;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="query-container">
+		<h2>学员证书查询数据库</h2>
+		<form id="queryForm">
+			<input type="text" class="form-control" id="queryInput" placeholder="编号（必填）" required>
+			<button type="submit" class="btn btn-primary btn-query">查询</button>
+		</form>
+		<div class="note">
+			注意：<br>
+			1. 查询证书需经权属人同意<br>
+			2. 证书查询结果不得用于违背权属人意愿之用途
+		</div>
+	</div>
+
+	<script>
+		const form = document.getElementById("queryForm");
+		const input = document.getElementById("queryInput");
+
+		form.addEventListener("submit", function(e) {
+			e.preventDefault(); // 阻止表单默认提交
+			const queryValue = input.value.trim();
+			if (queryValue) {
+				// 跳转到 /result?q=编号
+				window.location.href = `/result?q=${encodeURIComponent(queryValue)}`;
+			} else {
+				alert("请输入编号！");
+			}
+		});
+	</script>
+</body>
+</html>

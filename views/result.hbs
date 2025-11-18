@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>学员证书查询数据库</title>
+	{{> assets}}
+	<style>
+		body {
+            min-height: 100vh;
+            background: url("bg.png") round ;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+		.query-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 40px 30px;
+            width: 400px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            text-align: center;
+
+        }
+		.head {
+			display:flex ;
+			flex-direction: row ;
+			justify-content: center ;
+			align-items: center ;
+			width: 100% ;
+			margin-bottom: 20px ;
+		}
+
+		.head > img {
+			display:block ;
+            width:100px;
+            height: auto ;
+		}
+		.info {
+			width: 100% ;
+			display:flex ;
+			flex-direction: row ;
+			justify-content: flex-start ;
+			align-items: center ;
+			margin-bottom: 16px ;
+		}
+		.info > span:nth-of-type(1) {
+			margin-right: 10px;
+		}
+		.back {
+			position: absolute;
+			left: 20px;
+			top:20px;
+			color:#000 ;
+			font-size: 18px ;
+			font-weight: 500 ;
+			cursor:pointer ;
+		}
+	</style>
+</head>
+<body>
+	<div class="back" onclick="window.location.href='/'">返回</div>
+    <div class="result-container">
+        {{#if data}}
+           	<div class="query-container">
+           		<div class="head">
+			        <img src="{{data.stuPhoto}}">
+			   </div>
+		       <div class="info">
+				   <span>姓<span style="opacity: 0">姓名</span>名:</span>
+				   <span>{{ data.stuName }}</span>
+			   </div>
+		       <div class="info">
+					<span>性<span style="opacity: 0">姓名</span>别:</span>
+					<span>{{ data.stuSex }}</span>
+			   </div>
+		       <div class="info">
+                    <span>证件号码:</span>
+                    <span>{{ data.stuIdentification }}</span>
+               </div>
+		       <div class="info">
+                   <span>证书编号:</span>
+                   <span>{{ data.cerNo }}</span>
+              </div>
+			  <div class="info">
+	             <span>证书类型:</span>
+	             <span>{{ data.cerType }}</span>
+	          </div>
+		      <div class="info">
+                 <span>科目名称:</span>
+                 <span>{{ data.courseInfo }}</span>
+              </div>
+			  <div class="info">
+	            <span>培训学时:</span>
+	            <span>{{ data.learnHour }}</span>
+	          </div>
+			  <div class="info">
+	            <span>评定成绩:</span>
+	            <span>{{ data.stuEcatExam }}</span>
+	          </div>
+		      <div class="info">
+                <span>合作单位:</span>
+                <span>{{ data.dataReportOffice }}</span>
+              </div>
+			  <div class="info">
+	            <span>发证时间:</span>
+	            <span>{{ data.dataReportTime }}</span>
+	          </div>
+           	</div>
+        {{else}}
+           <div class="query-container">
+	            <h4>编号不存在或查询失败</h4>
+			</div>
+        {{/if}}
+    </div>
+</body>
+</html>
