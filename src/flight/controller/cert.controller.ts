@@ -36,6 +36,7 @@ export class CertController {
 			}
 
 		} catch (err) {
+			console.log(err);
 			throw new InternalServerErrorException("查询失败");
 		}
 	}
